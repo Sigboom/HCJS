@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>sigboom H5test</title>
+        <meta name="keywords" content="blank"/>
+        <meta name="description" content="blank"/>
+        <link rel="stylesheet" type="text/css" href="sheet.css"/>
+        <script>
+function allowDrop(ev)
+{
+    ev.preventDefault();
+}
+ 
+function drag(ev)
+{
+    ev.dataTransfer.setData("Text",ev.target.id);
+}
+ 
+function drop(ev)
+{
+    ev.preventDefault();
+    var data=ev.dataTransfer.getData("Text");
+    ev.target.appendChild(document.getElementById(data))
+}
+    </script>
+    <script>
+        function clickCounter()
+        {
+	        if(typeof(Storage)!=="undefined")
+	        {
+                if (sessionStorage.clickcount)
+                {
+			        sessionStorage.clickcount=Number(sessionStorage.clickcount)+1;
+		        }
+		        else
+		        {
+			        sessionStorage.clickcount=1;
+		        }
+		        document.getElementById("result1").innerHTML="在这个会话中你已经点击了该按钮 " + sessionStorage.clickcount + " 次 ";
+                if (localStorage.clickcount)
+		        {
+			        localStorage.clickcount=Number(localStorage.clickcount)+1;
+		        }
+		        else
+		        {
+			        localStorage.clickcount=1;
+		        }
+		        document.getElementById("result2").innerHTML=" 你已经点击了按钮 " + localStorage.clickcount + " 次 "; 
+            }
+	        else
+	        {
+		        document.getElementById("result1").innerHTML="抱歉，您的浏览器不支持 web 存储";
+	        }
+        }
+</script>
+    </head>
+    <body>
+    <video width="320" height="240" controls>
+        <source src="simple.mp4" type="video/mp4">
+        你的浏览器不支持 video 标签。
+    </video>
+    <hr/>
+    <!-- Web Worker -->
+    <p>chrome不允许通过本地文件访问使用Web Worker</p>
+    <p>计数： <output id="result3"></output></p>
+    <button onclick="startWorker()">开始工作</button>
+    <button onclick="stopWorker()">停止工作</button>
+    <script>
+        var w;
+        
+        function startWorker() {
+            if(typeof(Worker) !== "undefined") {
+                if(typeof(m) == "undefined") {
+                    m = new Worker("demo_worker.js");
+                }
+                m.onmessage = function(event) {
+                document.getElementById("result3").innerHTML = event.data;
+                };
+            } else {
+                document.getElementById("result3").innerHTML = "抱歉，你的浏览器不支持 Web Workers...";
+            }
+        }
+
+        function stopWorker()
+        {
+            m.terminate();
+            m = undefined;
+        }
+    </script>
+    <!-- SQL -->
+    <script type="text/javascript">
+
+         var db = openDatabase('mydb', '1.0', 'Test DB', 2 * 1024 * 1024);
+         var msg;
+
+         db.transaction(function (tx) {
+            tx.executeSql('CREATE TABLE IF NOT EXISTS LOGS (id unique, log)');
+            tx.executeSql('INSERT INTO LOGS (id, log) VALUES (1, "菜鸟教程")');
+            tx.executeSql('INSERT INTO LOGS (id, log) VALUES (2, "www.runoob.com")');
+            msg = '<p>数据表已创建，且插入了两条数据。</p>';
+            document.querySelector('#status').innerHTML =  msg;
+         });
+
+         db.transaction(function (tx) {
+            tx.executeSql('SELECT * FROM LOGS', [], function (tx, results) {
+               var len = results.rows.length, i;
+               msg = "<p>查询记录条数: " + len + "</p>";
+               document.querySelector('#status').innerHTML +=  msg;
+
+               for (i = 0; i < len; i++){
+                  msg = "<p><b>" + results.rows.item(i).log + "</b></p>";
+                  document.querySelector('#status').innerHTML +=  msg;
+               }
+            }, null);
+         });
+
+      </script>
+<div id="status" name="status">状态信息</div>
+    <!-- 页面存储 -->
+    <p><button onclick="clickCounter()" type="button">点我！</button></p>
+    <div id="result1"></div>
+    <div id="result2"></div>
+    <!-- input -->
+    <form action="index.html">
+        Search Google: <input type="search" name="googlesearch"><br>
+        <input type="submit">
+    </form>
+    <input type="range" name="points" min="1" max="10">
+    数量 ( 1 到 5 之间 ): <input type="number" name="quantity" min="1" max="5"><br/>
+    E-mail: <input type="email" name="email"><br/>
+    生日: <input type="date" name="bday"><br/>
+    选择你喜欢的颜色: <input type="color" name="favcolor">
+    <!-- 支持拖放 -->
+    <div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+    <div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)">
+    <img id="drag1" src="test.jpg" draggable="true" ondragstart="drag(event)" width="400" height="300">
+    </div>
+    <!-- canvas -->
+    <svg xmlns="http://www.w3.org/2000/svg" version="1.1">
+        <circle cx="100" cy="50" r="40" stroke="black" stroke-width="2" fill="red" />
+    </svg>
+    <img src="circle.gif" type="image/svg+xml" style="transform:scale(0.8)" />
+    <embed src="circle.gif" type="image/svg+xml" width=100%  style="transform:scale(0.5)" />
+    <object data="circle.gif" type="image/svg+xml"></object>
+    <iframe src="circle.gif"></iframe>
+    <canvas id="myCanvas" width="200" height="100" style="border:1px solid #000000;">
+    </canvas>
+        <script>
+            var c=document.getElementById("myCanvas");
+            var ctx=c.getContext("2d");
+            ctx.fillStyle="#FF0000";
+            ctx.fillRect(0,0,150,75);
+
+            ctx.moveTo(0,0);
+            ctx.lineTo(200,100);
+            ctx.stroke();
+            
+            ctx.beginPath();
+            ctx.arc(95,50,40,0,2*Math.PI);
+            ctx.stroke();
+            
+            ctx.font="30px Arial";
+            ctx.strokeText("Hello World",10,50);
+            // 创建渐变
+            var grd=ctx.createLinearGradient(10,0,200,0);
+            grd.addColorStop(0,"red");
+            grd.addColorStop(1,"white");
+            // 填充渐变
+            ctx.fillStyle=grd;
+            ctx.fillRect(100,10,150,80);
+            
+            //填充图片
+            //var img=document.getElementById("scream");
+            //ctx.drawImage(img,10,10);
+        </script>
+
+    <br><a href="https://www.runoob.com/html/html5-new-element.html">H5新元素</a>
+    <ol>
+        <li>audio 音频</li>
+        <li>video 视频</li>
+        <li>source 定义多媒体内容</li>
+        <li>embed 定义插件</li>
+        <li>track 定义外部文本轨道</li>
+    </ol>
+    </body>
+</html>

@@ -1,0 +1,39 @@
+@charset "utf-8";
+h1 {
+    text-align:center;
+    background-color:yellow; 
+    margin-block-start: 0em;
+    margin-block-end: 0em;
+    margin-bottom:0em;
+}
+
+p.tip span {
+    font-weight:bold;
+}
+
+body {
+    margin:0px;
+    padding:0px;
+}
+
+#container {
+    margin: 0px 0cm 0cm 0cm;
+    border: 1px solid red;
+    width:100%;
+}
+
+#header {
+    margin:0px;
+    background-color:#FFA500;
+}
+
+#footer {
+    clear:both;
+    text-align:center;
+}
+
+header, section, footer, aside, nav, main, article, figure {
+    display: block;
+}
+
+#div1 {width:00px;height:300px;padding:10px;border:1px solid #aaaaaa;}
