@@ -1,8 +1,8 @@
 {
-  "name": "test-vue",
+  "name": "autosort",
   "version": "1.0.0",
-  "description": "learn vue",
-  "author": "daniel",
+  "description": "local project test vue",
+  "author": "Sigboom <sigboom@163.com>",
   "private": true,
   "scripts": {
     "dev": "webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",

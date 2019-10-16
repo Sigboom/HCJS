@@ -1,6 +1,6 @@
-# test-vue
+# autosort
 
-> learn vue
+> local project test vue
 
 ## Build Setup
 
