@@ -1,103 +1,46 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta charset="utf-8"/>
-        <title>sigboom</title>
-        <meta name="keywords" content="blank"/>
-        <meta name="description" content="blank"/>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0">
+        <link rel="shortcut icon" href="static/img/favicon.ico" />
+        <link rel="bookmark"href="static/img/favicon.ico" />
+        <title>Sig文档整理</title>
         <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+        <link rel="stylesheet" href="static/css/index.css" />
     </head>
     <body>
-        <div id="app">
-            {{ message }}
-        </div>
-        <div id="app-2">
-            <span v-bind:title="message">
-                v-bind:title
+        <div id=header>
+            <a href="index.html">
+                <img id=logo src="static/img/logo.png">
+            </a>
+            <span id=nav>
+                <ul class=nav><li class=nav-li v-for="menu in nav"><a>{{ menu.name }}</a></li></ul>
             </span>
         </div>
-        <div id="app-3">
-            <p v-if="seen">you can see me</p>
+        <div id=title>
+            <div id=main>
+                <h1 class="title-h">{{ title }}<br>{{ subtitle }}</h1>
+                <button>开始</button>
+            </div>
         </div>
-        <div id="app-4">
-            <ol><li v-for="todo in todos">{{ todo.text }}</li></ol>
-        </div>
-        <div id="app-5">
-            <p>{{ message }}</p>
-            <button v-on:click="reverseMessage">翻转消息</button>
-        </div>
-        <div id="app-6">
-            <p>{{ message }}</p>
-            <input v-model="message">
-        </div>
-        <div id="app-7">
-            <ol>
-                <todo-item 
-                    v-for="item in groceryList"
-                    v-bind:todo="item"
-                    v-bind:key="item.id"
-                ></todo-item>
-            </ol>
-        </div>
-
-        <script type="text/javascript">
-            Vue.component('todo-item', {
-                props: ['todo'],
-                template: '<li>{{ todo.text }}</li>'
-            })
-            var app7 = new Vue ({
-                el:"#app-7",
+        <script>
+            var head = new Vue({
+                el: "#header",
                 data: {
-                    groceryList: [
-                        { id: 0, text: '蔬菜' },
-                        { id: 1, text: '奶酪' },
-                        { id: 2, text: '东西' }
+                    nav: [
+                        { name: '简介' },
+                        { name: '使用教程' },
+                        { name: '登录' },
+                        { name: '感谢' }
                     ]
                 }
-            })
-            var app6 = new Vue ({
-                el: "#app-6",
+            });
+            var title = new Vue({
+                el: "#title",
                 data: {
-                    message: "Hello input v-model"
-                }
-            })
-            var app5 = new Vue ({
-                el: "#app-5",
-                data: {
-                    message: "Hello methods!"   
-                },
-                methods: {
-                    reverseMessage: function() {
-                        this.message = this.message.split('').reverse().join('')
-                    }
-                }
-            })
-            var app4 = new Vue ({
-                el: "#app-4",
-                data: {
-                    todos: [
-                        { text: 'HTML' },
-                        { text: 'CSS' },
-                        { text: "JS" }
-                    ]
-                }
-            })
-            var app3 = new Vue ({
-                el: "#app-3",
-                data: {
-                    seen: true
-                }
-            })
-            var app = new Vue({
-                el: "#app",
-                data: {
-                    message: 'Hello World!'
-                }
-            })
-            var app2 = new Vue({
-                el: '#app-2',
-                data: {
-                    message: '页面加载于' + new Date().toLocaleString()
+                    title: "Sig文档整理",
+                    subtitle: "最轻松的文档管理平台"
                 }
             })
         </script>

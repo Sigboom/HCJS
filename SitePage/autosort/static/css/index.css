@@ -1,0 +1,43 @@
+body {
+    margin: 0;
+}
+
+#header {
+    padding: 10px 60px;
+    background-color: rgb(121, 128, 125);
+}
+
+#logo {
+    height: 50px;
+    width: 81px;
+}
+
+#nav {
+    float: right;
+}
+
+.nav .nav-li {
+    display: inline;
+    font-family: "Source Sans Pro", "Helvetica Neue", Arial, sans-serif;
+    font-size: 1.5rem;
+}
+
+.nav-li {
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+#title {
+    background-image: url(../img/background.jpeg);
+    background-size: cover;
+    padding: 80px 40px 80px;
+}
+
+#main {
+    padding-left:40px;
+}
+
+.title-h {
+    margin-block-start: 0em;
+    margin-block-end: 0em;
+}
