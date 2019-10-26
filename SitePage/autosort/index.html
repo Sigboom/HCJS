@@ -7,35 +7,47 @@
         <link rel="bookmark"href="static/img/favicon.ico" />
         <title>Sig文档整理</title>
         <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+        <script src="node_modules/vue/dist/vue.js"></script>
         <link rel="stylesheet" href="static/css/index.css" />
     </head>
     <body>
-        <div id=header>
+        <div id="header">
             <a href="index.html">
                 <img id=logo src="static/img/logo.png">
             </a>
-            <span id=nav>
-                <ul class=nav><li class=nav-li v-for="menu in nav"><a>{{ menu.name }}</a></li></ul>
+            <span id="nav">
+                <input type="text" id="search">
+                <ul id="nav-ul">
+                    <li id=nav-li v-for="menu in nav"><a id="nav-li" v-bind:href="menu.href">{{ menu.name }}</a></li>
+                </ul>
             </span>
         </div>
-        <div id=title>
-            <div id=main>
+        <div id="main">
+            <div id="title">
                 <h1 class="title-h">{{ title }}<br>{{ subtitle }}</h1>
-                <button>开始</button>
+                <br>
+                <a id="title-bu" href="#">开始</a>
+            </div>
+            <div id="sign">
+                <form id="sign-f" accept-charset="utf-8" method="post">
+                    <input type="text">
+                    <input type="hidden">
+                    <button>Sign up for Sig</button>
+                </form>
             </div>
         </div>
+
         <script>
             var head = new Vue({
                 el: "#header",
                 data: {
                     nav: [
-                        { name: '简介' },
-                        { name: '使用教程' },
-                        { name: '登录' },
-                        { name: '感谢' }
+                        { name: '首页', href: '#' },
+                        { name: '使用教程', href: 'https://sigboom.cn' },
+                        { name: '感谢', href: '#' }
                     ]
                 }
-            });
+            })
             var title = new Vue({
                 el: "#title",
                 data: {

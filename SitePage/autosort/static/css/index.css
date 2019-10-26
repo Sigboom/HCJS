@@ -16,28 +16,69 @@ body {
     float: right;
 }
 
-.nav .nav-li {
+#nav-ul {
+    display: inline;
+}
+
+#nav-li {
     display: inline;
     font-family: "Source Sans Pro", "Helvetica Neue", Arial, sans-serif;
-    font-size: 1.5rem;
+    font-size: 1.3rem;
+    padding-top: 10px;
+    margin-right: 10px;
 }
 
-.nav-li {
-    margin-left: 20px;
-    margin-right: 20px;
-}
-
-#title {
-    background-image: url(../img/background.jpeg);
-    background-size: cover;
-    padding: 80px 40px 80px;
+#search {
+    display: inline;
+    border-radius: 15px;
+    margin-right: 10px;
+    height: 30px;
+    box-sizing: border-box;;
+    padding: 0 15px 0 30px;
+    border: 0px;
+    background: #fff url(../img/search.png) 8px 5px no-repeat;
+    background-size: 20px;
 }
 
 #main {
+    background-image: url(../img/background.jpeg);
+    background-size: cover;
+    padding: 150px 80px 200px;
+}
+
+#title {
+    display:inline;
     padding-left:40px;
+    width:50%;
 }
 
 .title-h {
+    display: inline;
     margin-block-start: 0em;
     margin-block-end: 0em;
+    padding-bottom: 20px;
+    font-size: 3rem;
+}
+
+#nav-li {
+    color: #fee;
+    text-decoration: none;
+}
+
+#title-bu {
+    padding: 0.75em 2em;
+    border-radius: 2em;
+    color: #fff;
+    background-color: #4fc08d;
+    text-decoration: none;
+}
+
+#sign {
+    display:inline;
+    float:right;
+    width:45%;
+    ;
+}
+#sign-f {
+    display:inline;
 }
