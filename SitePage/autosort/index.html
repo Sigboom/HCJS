@@ -10,15 +10,16 @@
         <script src="node_modules/vue/dist/vue.js"></script>
         <link rel="stylesheet" href="static/css/index.css" />
     </head>
+    
     <body>
         <div id="header">
             <a href="index.html">
                 <img id=logo src="static/img/logo.png">
             </a>
-            <span id="nav">
-                <input type="text" id="search">
-                <ul id="nav-ul">
-                    <li id=nav-li v-for="menu in nav"><a id="nav-li" v-bind:href="menu.href">{{ menu.name }}</a></li>
+            <span id="header-nav">
+                <input type="text" id="search" placeholder="搜索提示框" >
+                <ul class="header-nav-ul">
+                    <li class="header-nav-li" v-for="menu in nav"><a class="h-lnk" v-bind:href="menu.href">{{ menu.name }}</a></li>
                 </ul>
             </span>
         </div>
@@ -26,18 +27,24 @@
             <div id="title">
                 <h1 class="title-h">{{ title }}<br>{{ subtitle }}</h1>
                 <br>
-                <a id="title-bu" href="#">开始</a>
             </div>
-            <div id="sign">
-                <form id="sign-f" accept-charset="utf-8" method="post">
-                    <input type="text">
-                    <input type="hidden">
-                    <button>Sign up for Sig</button>
+            <div class="sign">
+                <form id="login" method="POST">                   
+                    <p>帐号密码登录</p>
+                    <input id="userName" type="text" name="userName" autocomplete="off" value placeholder="手机/邮箱/用户名">
+                    <input type="password" name="password" autocomplete="off" value placeholder="密码"></br>
+                    <input class="sign-bu" type="submit" value="登录">
                 </form>
             </div>
         </div>
         <div id="describe">
-
+            
+        </div>
+        <div id="footer">
+            <ul class="footer-ul">
+                <li class="footer-li-head"><a class="b-lnk" v-bind:href=logo.href>{{ logo.name }}</a></li>
+                <li class="footer-li" v-for="blink in nav"><a class="b-lnk" v-bind:href="blink.href">{{ blink.name }}</a></li>
+            </ul>      
         </div>
         <script>
             var head = new Vue({
@@ -56,6 +63,18 @@
                 data: {
                     title: "Sig文档整理",
                     subtitle: "最轻松的文档管理平台"
+                }
+            })
+            var footer = new Vue({
+                el: "#footer",
+                data: {
+                    logo: {name: '©2019 Sig 文档整理平台', href: '#'},
+                    nav:[
+                        {name: 'lalala', href: '#'},
+                        {name: 'lalala', href: '#'},
+                        {name: 'lalala', href: '#'},
+                        {name: 'lalala', href: '#'}
+                    ]
                 }
             })
         </script>
