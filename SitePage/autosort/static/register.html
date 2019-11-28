@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Sig注册</title>	
+        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+        <script src="../node_modules/vue/dist/vue.js"></script>
+        <link rel="stylesheet" href="css/register.css" />
+    </head>
+    <body>
+        <div id="header">
+            <a href="../index.html">
+                <img class="header-logo" src="img/logo.png" alt="logo">
+            </a>
+            <span class="header-nav">
+                <input type="text" class="header-search" placeholder="搜索提示框" >
+                <ul class="header-nav-ul">
+                    <li class="header-nav-li" v-for="menu in nav"><a class="a-lnk" v-bind:href="menu.href">{{ menu.name }}</a></li>
+                </ul>
+            </span>
+        </div>
+
+        <div id="pages">
+            <div class="pages-card">
+                <p class="pages-card-head">Sign Up</p>
+                <div class="pages-card-body">
+                    <form class="card-form" method="post">
+                        <div class="form-body">
+                            <input type="text" class="form-input"  placeholder="新用户名">
+                            <input type="hidden" class="form-input"  placeholder="你的邮箱">
+                            <input type="password" class="form-input"  placeholder="新密码">
+                            <input type="password" class="form-input"  placeholder="确认密码">
+                            <button type="button" class="form-button">Log Up for Sig</button>
+                        </div>
+                        <div class="form-footer">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        
+        <div id="footer">
+            <ul class="footer-ul">
+                <li class="footer-li-head"><a class="f-lnk" v-bind:href=logo.href>{{ logo.name }}</a></li>
+                <li class="footer-li" v-for="blink in nav"><a class="f-lnk" v-bind:href="blink.href">{{ blink.name }}</a></li>
+            </ul>      
+        </div>
+        
+        <script type="text/javascript">
+            var head = new Vue ({
+                el: '#header',
+                data: {
+                    nav: [
+                        { name: '首页', href: '#' },
+                        { name: '使用教程', href: 'https://sigboom.cn' },
+                        { name: '感谢', href: '#' },
+                        { name: '反馈', href: '#' }
+                    ]
+                }
+            })
+            var footer = new Vue({
+                el: "#footer",
+                data: {
+                    logo: {name: 'Copyright©2019', href: '#'},
+                    nav:[
+                        {name: 'Sig 文档整理平台', href: '#'},
+                    ]
+                }
+            })
+        </script>
+    </body>
+</html>

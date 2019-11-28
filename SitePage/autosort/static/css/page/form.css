@@ -59,7 +59,8 @@
 .account-pages {
     height: 100%;
     width: 100%;
-    background:url(../../img/bg1.jpg) center !important;
+    background-image: url(../../img/register_bg.jpg) !important;
+    background-position:center;
     background-size: cover;
 }
 .wrapper-page {
