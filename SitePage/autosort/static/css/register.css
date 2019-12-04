@@ -68,7 +68,8 @@ input:-ms-input-placeholder{  /* Internet Explorer 10-11 */
 
 #pages {
     padding: 20px 0;
-    background-image: url(../img/register_bg.jpg);
+    background: url(../img/register_bg.jpg) no-repeat;
+    background-size: cover;
 }
 
 .pages-card {
@@ -115,6 +116,7 @@ input:-ms-input-placeholder{  /* Internet Explorer 10-11 */
     width: 80%;
     height:40px;
     border-radius: 2em;
+    border: 0px;
     color: #fff;
     background-color: #4fc08d;
     line-height: 16px;
