@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>sigboom</title>
+        <meta name="keywords" content="blank"/>
+        <meta name="description" content="blank"/>
+        <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    </head>
+    <body>
+        <div id= "pot">
+            <ol>
+                <todo-item v-for="item in list" v-bind:todo="item" v-bind:key="item.id"></todo-item>
+            </ol>
+        </div>
+        <script>
+            Vue.component('todo-item', {
+                props: ['todo'],
+                template: '<li>{{ todo.text }}</li>'
+            })
+
+            var app = new Vue({
+                el:"#pot",
+                data: {
+                    list: [
+                        { id: 0, text: 'a' },    
+                        { id: 1, text: 'b' },    
+                        { id: 2, text: 'c' }    
+                    ]
+                }
+            })
+        </script>
+    </body>
+</html>
