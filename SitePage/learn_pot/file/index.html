@@ -1,52 +1,32 @@
 <!DOCTYPE html>
 <html>
-    <head> 
-        <meta charset="utf-8"> 
-        <title>sigboom</title> 
+    <head>
+        <meta charset="utf-8"/>
+        <title>sigboom</title>
         <script src="https://cdn.jsdelivr.net/npm/vue"></script>
     </head>
-    <body> 
-        <form id="form">
-            <input type="text" value="" v-model="name" placeholder="请输入用户名">
-            <input type="text" value="" v-model="age" placeholder="请输入年龄">
-            <input type="file" @change="getFile($event)">
-            <button @click="submitForm($event)">提交</button>
-        </form>
+    <body>
+        <div id= "app"></div>
+        <div id= "pot">
+            <ol>
+                <todo-item v-for="item in list" v-bind:todo="item" v-bind:key="item.id"></todo-item>
+            </ol>
+        </div>
         <script>
-            var form2 = new Vue ({
-                el: "form",
-                methods:{
-                    submit: function(event) {
-                        event.preventDefault();
-                        let formData = new FormData();
+            Vue.component('todo-item', {
+                props: ['todo'],
+                template: '<li>{{ todo.text }}</li>'
+            })
 
-                        //下面是表单绑定的data 数据
-                        formData.append('name', this.name);
-                        formData.append('age', this.age);
-                        formData.append('file', this.file);
-
-                        //vue-resource
-                        this.$http.post('/api', formData).then(res => {
-                            // success callback
-                        }, err => {
-                            // error callback
-                        });
-
-                        //axios
-
-                        //根据后台接收参数格式进行修改
-                        let config = {
-                            headers: {
-                                'Content-Type': 'multipart/form-data'
-                            }
-                        }
-
-                        axios.post('/api',formData, config).then(res => {
-                            // success callback
-                        }).catch(err => {
-                            // error callback
-                        });
-                    }
+            var test = new Vue({ el:"#app" })
+            var app = new Vue({
+                el:"#pot",
+                data: {
+                    list: [
+                        { id: 0, text: 'a' },    
+                        { id: 1, text: 'b' },    
+                        { id: 2, text: 'c' }    
+                    ]
                 }
             })
         </script>
