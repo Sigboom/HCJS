@@ -21,14 +21,6 @@
       </li>
       <li>
         <a
-          href="https://chat.vuejs.org"
-          target="_blank"
-        >
-          Community Chat
-        </a>
-      </li>
-      <li>
-        <a
           href="https://twitter.com/vuejs"
           target="_blank"
         >
